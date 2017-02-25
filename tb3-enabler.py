@@ -21,12 +21,14 @@ backup = "%s.original" % target
 md5_version = {
     "00e2f0eb5db157462a83e4de50583e33": ["10.12.1 (16B2659)"],
     "ebde660af1f51dc7482551e8d07c62fd": ["10.12.2 (16C67)"],
-    "7fbc510cf91676739d638e1319d44e0e": ["10.12.3 (16D32)"]
+    "7fbc510cf91676739d638e1319d44e0e": ["10.12.3 (16D32)"],
+    "ad1f6d9f26deb5fd74b40e672141d65b": ["10.12.4 (16E163f)"]
 }
 md5_patch = {
     "00e2f0eb5db157462a83e4de50583e33": "a6c2143c2f085c2c104369d7a1adfe03",
     "ebde660af1f51dc7482551e8d07c62fd": "2ebb68137da4a1cb0dfc6e6f05be3db2",
-    "7fbc510cf91676739d638e1319d44e0e": "0af475c26cdf5e26f8fd7e4341dadea5"
+    "7fbc510cf91676739d638e1319d44e0e": "0af475c26cdf5e26f8fd7e4341dadea5",
+    "ad1f6d9f26deb5fd74b40e672141d65b": "99ab120bd6e959029f1f84c8f62a63c8"
 }
 md5_patch_r = dict((v, k) for k, v in md5_patch.items())
 
@@ -40,7 +42,8 @@ re_md5 = {
     0: [
         "00e2f0eb5db157462a83e4de50583e33",
         "ebde660af1f51dc7482551e8d07c62fd",
-        "7fbc510cf91676739d638e1319d44e0e"
+        "7fbc510cf91676739d638e1319d44e0e",
+        "ad1f6d9f26deb5fd74b40e672141d65b"
         ],
 }
 md5_re = dict((v, re_index[k]) for k, l in re_md5.items() for v in l)
@@ -51,6 +54,7 @@ def md5(filename):
     with open(filename, 'rb') as f:
         for chunk in iter(lambda: f.read(8192), ''):
             h.update(chunk)
+    print h.hexdigest()
     return h.hexdigest()
 
 
